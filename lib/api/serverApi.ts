@@ -45,3 +45,14 @@ export async function fetchNoteById(id: string): Promise<Note> {
   });
   return response.data;
 }
+
+export async function checkSession() {
+  const cookieStore = await cookies();
+
+  const response = await nextServer.get("/auth/session", {
+    headers: {
+      Cookie: cookieStore.toString(),
+    },
+  });
+  return response;
+}
