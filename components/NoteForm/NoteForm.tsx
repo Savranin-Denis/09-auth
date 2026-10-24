@@ -4,9 +4,9 @@ import css from "./NoteForm.module.css";
 import React, { useId, useState } from "react";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { NewNote, NoteTag } from "@/types/note";
-import { createNote } from "@/lib/api";
 import { useRouter } from "next/navigation";
 import { useNoteDraftStore } from "@/lib/store/noteStore";
+import { createNote } from "@/lib/api/clientApi";
 
 interface FormErrors {
   title?: string;

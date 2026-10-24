@@ -2,7 +2,6 @@
 
 import SearchBox from "@/components/SearchBox/SearchBox";
 import css from "./NotesPage.module.css";
-import { fetchNotes } from "@/lib/api";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
@@ -13,6 +12,7 @@ import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import NoteList from "@/components/NoteList/NoteList";
 import { NotesClientProps } from "@/types/note";
 import Link from "next/link";
+import { fetchNotes } from "@/lib/api/clientApi";
 
 const NotesClient = ({ tag }: NotesClientProps) => {
   const [searchInput, setSearchInput] = useState("");
