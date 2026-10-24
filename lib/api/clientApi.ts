@@ -23,6 +23,11 @@ export type RegisterRequest = {
   password: string;
 };
 
+export type LoginRequest = {
+  email: string;
+  password: string;
+};
+
 export async function fetchNotes({
   search,
   page,
@@ -58,5 +63,10 @@ export async function fetchNoteById(id: string): Promise<Note> {
 
 export const register = async (data: RegisterRequest) => {
   const res = await nextServer.post<User>("/auth/register", data);
+  return res.data;
+};
+
+export const login = async (data: LoginRequest) => {
+  const res = await nextServer.post<User>("/auth/login", data);
   return res.data;
 };
