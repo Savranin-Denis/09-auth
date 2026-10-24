@@ -1,4 +1,5 @@
-import { fetchNotes } from "@/lib/api";
+"use client";
+
 import css from "./App.module.css";
 import { keepPreviousData, useQuery } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
@@ -9,6 +10,7 @@ import Pagination from "../Pagination/Pagination";
 import Loader from "../Loader/Loader";
 import ErrorMessage from "../ErrorMessage/ErrorMessage";
 import NoteList from "../NoteList/NoteList";
+import { fetchNotes } from "@/lib/api/clientApi";
 
 export default function App() {
   const [searchInput, setSearchInput] = useState("");
