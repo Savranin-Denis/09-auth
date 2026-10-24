@@ -1,5 +1,6 @@
 import { NewNote, Note } from "@/types/note";
 import { nextServer } from "./api";
+import { User } from "@/types/user";
 
 interface FetchNotesResponse {
   notes: Note[];
@@ -16,6 +17,11 @@ interface FetchNotesParams {
   perPage?: number;
   tag?: string;
 }
+
+export type RegisterRequest = {
+  email: string;
+  password: string;
+};
 
 export async function fetchNotes({
   search,
@@ -49,3 +55,8 @@ export async function fetchNoteById(id: string): Promise<Note> {
   const response = await nextServer.get<Note>(`${"/notes"}/${id}`);
   return response.data;
 }
+
+export const register = async (data: RegisterRequest) => {
+  const res = await nextServer.post<User>("/auth/register", data);
+  return res.data;
+};
