@@ -32,6 +32,11 @@ type CheckSessionRequest = {
   success: boolean;
 };
 
+export type UpdateUserRequest = {
+  email?: string;
+  username: string;
+};
+
 export async function fetchNotes({
   search,
   page,
@@ -87,4 +92,9 @@ export const getMe = async () => {
 
 export const logout = async (): Promise<void> => {
   await nextServer.post("/auth/logout");
+};
+
+export const updateMe = async (payload: UpdateUserRequest) => {
+  const res = await nextServer.patch("/users/me", payload);
+  return res.data;
 };
